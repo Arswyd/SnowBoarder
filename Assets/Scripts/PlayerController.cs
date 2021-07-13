@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     
     Rigidbody2D rb2d;
     SurfaceEffector2D surfaceEffector2D;
+    bool canMove = true;
     
     void Start()
     {
@@ -21,8 +22,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RespondToBoost();
-        RotatePlayer();
+        if (canMove)
+        {
+            RespondToBoost();
+            RotatePlayer(); 
+        }
+    }
+
+    public void DisableControls()
+    {
+        canMove = false;
     }
 
     void RespondToBoost()
